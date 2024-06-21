@@ -1,0 +1,20 @@
+# Logfile created on 2024-06-20 20:31:20 +0000 by logger.rb/v1.5.0
+[2024-06-20T20:31:20+00:00] INFO: Started Cinc Zero at chefzero://localhost:1 with repository at /opt/gitlab/embedded (One version per cookbook)
+[2024-06-20T20:31:20+00:00] INFO: *** Cinc Client 18.3.0 ***
+[2024-06-20T20:31:20+00:00] INFO: Platform: x86_64-linux
+[2024-06-20T20:31:20+00:00] INFO: Cinc-client pid: 32
+[2024-06-20T20:31:21+00:00] INFO: Setting the run_list to ["recipe[gitlab-ee]"] from CLI options
+[2024-06-20T20:31:21+00:00] INFO: Run List is [recipe[gitlab-ee]]
+[2024-06-20T20:31:21+00:00] INFO: Run List expands to [gitlab-ee]
+[2024-06-20T20:31:21+00:00] INFO: Starting Cinc Client Run for gitlab.example.com
+[2024-06-20T20:31:21+00:00] INFO: Running start handlers
+[2024-06-20T20:31:21+00:00] INFO: Start handlers complete.
+[2024-06-20T20:31:22+00:00] INFO: Loading cookbooks [gitlab-ee@0.0.1, package@0.1.0, gitlab@0.0.1, consul@0.1.0, patroni@0.1.0, pgbouncer@0.1.0, spamcheck@0.1.0, runit@5.1.7, logrotate@0.1.0, postgresql@0.1.0, redis@0.1.0, monitoring@0.1.0, registry@0.1.0, mattermost@0.1.0, gitaly@0.1.0, praefect@0.1.0, gitlab-kas@0.1.0, gitlab-pages@0.1.0, letsencrypt@0.1.0, nginx@0.1.0, acme@4.1.6, crond@0.1.0]
+[2024-06-20T20:31:23+00:00] INFO: Generating default secrets
+[2024-06-20T20:31:25+00:00] ERROR: Running exception handlers
+[2024-06-20T20:31:25+00:00] ERROR: Exception handlers complete
+[2024-06-20T20:31:25+00:00] FATAL: Stacktrace dumped to /opt/gitlab/embedded/cookbooks/cache/cinc-stacktrace.out
+[2024-06-20T20:31:25+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2024-06-20T20:31:25+00:00] FATAL: PLEASE PROVIDE THE CONTENTS OF THE stacktrace.out FILE (above) IF YOU FILE A BUG REPORT
+[2024-06-20T20:31:25+00:00] FATAL: ---------------------------------------------------------------------------------------
+[2024-06-20T20:31:25+00:00] FATAL: RuntimeError: initial_root_password: Length is too short, minimum is 8 characters

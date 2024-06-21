@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  gitlab-license-generator:
+    build: .
+    container_name: gitlab-license-generator
+    volumes:
+      - ./public.key:/opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub
+      - ./result.gitlab-license:/usr/src/app/build/result.gitlab-license
+    environment:
+      - LANG=C.UTF-8
+    command: ./make.sh
+
+  gitlab:
+    image: 'gitlab/gitlab-ee:17.0.2-ee.0'
+    container_name: gitlab
+    restart: always
+    hostname: 'gitlab.example.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.example.com'
+        gitlab_rails['initial_root_password'] = File.read('/run/secrets/gitlab_root_password')
+        gitlab_rails['initial_license_file'] = '/etc/gitlab/license/result.gitlab-license'
+        gitlab_rails['usage_ping_enabled'] = false
+    ports:
+      - '80:80'
+      - '443:443'
+      - '27:52'
+    volumes:
+      - gitlab-config:/etc/gitlab
+      - gitlab-logs:/var/log/gitlab
+      - gitlab-data:/var/opt/gitlab
+      - ./result.gitlab-license:/etc/gitlab/license/result.gitlab-license:ro
+    secrets:
+      - gitlab_root_password
+
+secrets:
+  gitlab_root_password:
+    file: ./gitlab_root_password.txt
+
+volumes:
+  gitlab-config:
+  gitlab-logs:
+  gitlab-data:
